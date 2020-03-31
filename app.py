@@ -1,9 +1,6 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.graph_objs as go
-from dash.dependencies import Input, Output, State
-from collections import deque, Counter
 
 ########### Define your variables ######
 
@@ -18,17 +15,32 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title=tabtitle
 
+
+###### Colors
+colors = {
+    'background': '#111111',
+    'text': '#7FDBFF'
+}
+
 ########### Set up the layout
 
 app.layout = html.Div(children=[
-    html.H1(myheading1),
- 
-    dcc.Input(id='my-id',  type='number'),
-    html.Div(id='my-div')
+    html.H1(myheading1,
+            style = {'color': colors['text']}
+),
+    #################### Salary inputs
+    html.Label('Enter your gross income on your most recent tax filing 2018 or 2019'),
+    dcc.Input(id='Salary',  type='number'),
+
+
+
+    ######################## Dependents inputs
+    html.Label('Enter number of dependents you claimed'),
+    dcc.Input(id='Dependents', type='number'),
+
 ])
 def update_output_div(input_value):
     return 'You\'ve entered "{}"'.format(input_value)
-
 
 ############ Deploy
 if __name__ == '__main__':
