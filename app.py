@@ -38,7 +38,7 @@ app.layout = html.Div(children=[
 
     #################### Salary inputs
     html.Label('Enter your Adjusted Gross Income'),
-    dcc.Input(id='salary',  type='number'),
+    dcc.Input(id='salary',  type='number',min=0),
 
 
 
