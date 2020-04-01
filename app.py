@@ -38,13 +38,13 @@ app.layout = html.Div(children=[
 
     #################### Salary inputs
     html.Label('Enter your Adjusted Gross Income'),
-    dcc.Input(id='salary',  type='number', min=0, step=100,),
+    dcc.Input(id='salary',  type='number'),
 
 
 
     ######################## Dependents inputs
     html.Label('Enter the number of dependent children under the age of 17'),
-    dcc.Input(id='dependents', type='number',value=0,min=0, max=5),
+    dcc.Input(id='dependents', type='number',value=0, min=0, max=5),
 
     ######## output functions
     html.H4(id='my-div3', style={'color': colors['text']}),], style = {'columnCount': 1}
@@ -66,13 +66,13 @@ def update_output_div(filing_status,salary,dependents):
     min_threshold= (75000 * filing_status)
     ###### Apply simple situation logic
     if salary <= min_threshold:
-        return (f"{max_allowance:,d}")
+        return max_allowance
     ###### Apply logic for reduction
     else:
         difference = (salary - min_threshold)
         depreciate_allowance = max_allowance - (difference*.05)
         absolute_allowance = max(0,depreciate_allowance)
-        return (f"{absolute_allowance:,d}")
+        return absolute_allowance
 ############ Deploy
 if __name__ == '__main__':
     app.run_server()
