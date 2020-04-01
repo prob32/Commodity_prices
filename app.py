@@ -66,13 +66,13 @@ def update_output_div(filing_status,salary,dependents):
     min_threshold= (75000 * filing_status)
     ###### Apply simple situation logic
     if salary <= min_threshold:
-        return max_allowance
+        return (f"{max_allowance:,d}")
     ###### Apply logic for reduction
     else:
         difference = (salary - min_threshold)
         depreciate_allowance = max_allowance - (difference*.05)
         absolute_allowance = max(0,depreciate_allowance)
-        return absolute_allowance
+        return (f"{absolute_allowance:,d}")
 ############ Deploy
 if __name__ == '__main__':
     app.run_server()
