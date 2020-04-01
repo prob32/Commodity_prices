@@ -20,7 +20,7 @@ app.title=tabtitle
 ###### Colors
 colors = {
     'background': '#111111',
-    'text': '#7FDBFF'
+    'text': 'rgb(60,5,224)'
 }
 
 ########### Set up the layout
