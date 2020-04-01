@@ -44,7 +44,7 @@ app.layout = html.Div(children=[
 
     ######################## Dependents inputs
     html.Label('Enter the number of dependent children under the age of 17'),
-    dcc.Input(id='dependents', type='number',value=0, max=5),
+    dcc.Input(id='dependents', type='number',value=0,min=0, max=5),
 
     ######## output functions
     html.H4(id='my-div3', style={'color': colors['text']}),], style = {'columnCount': 1}
