@@ -34,16 +34,16 @@ app.layout = html.Div(children=[
     dcc.Dropdown(
         id='filing_status',
         options=[{'label': "Single", 'value': 1},
-                 {'label': "Married", 'value': 2}], value= 1),
+                 {'label': "Married Filing Jointly", 'value': 2}], value= 1),
 
     #################### Salary inputs
-    html.Label('Enter your gross income on your most recent tax filing 2018 or 2019'),
+    html.Label('Enter your Adjusted Gross Income'),
     dcc.Input(id='salary',  type='number'),
 
 
 
     ######################## Dependents inputs
-    html.Label('Enter number of dependents you claimed'),
+    html.Label('Enter the number of dependent children under the age of 17'),
     dcc.Input(id='dependents', type='number',value=0),
 
     ######## output functions
@@ -59,11 +59,14 @@ app.layout = html.Div(children=[
 
 ####### tax logic function
 def update_output_div(filing_status,salary,dependents):
+    ########## Define variables
     dependent_allowance = 500*dependents
     max_allowance = 1200*filing_status + dependent_allowance
     min_threshold= (75000 * filing_status)
+    ###### Apply simple situation logic
     if salary <= min_threshold:
         return max_allowance
+    ###### Apply logic for reduction
     else:
         difference = (salary - min_threshold)
         depreciate_allowance = max_allowance - (difference*.05)
