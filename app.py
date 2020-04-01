@@ -38,7 +38,7 @@ app.layout = html.Div(children=[
 
     #################### Salary inputs
     html.Label('Enter your Adjusted Gross Income'),
-    dcc.Input(id='salary',  type='number'),
+    dcc.Input(id='salary',  type='number', min=0, step=1000,),
 
 
 
@@ -60,6 +60,7 @@ app.layout = html.Div(children=[
 ####### tax logic function
 def update_output_div(filing_status,salary,dependents):
     ########## Define variables
+
     dependent_allowance = 500*dependents
     max_allowance = 1200*filing_status + dependent_allowance
     min_threshold= (75000 * filing_status)
