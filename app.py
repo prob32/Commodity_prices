@@ -59,15 +59,16 @@ app.layout = html.Div(children=[
 
 ####### tax logic function
 def update_output_div(filing_status,salary,dependents):
-    if salary <= 75000*filing_status:
-        x = 1200*filing_status
+    dependent_allowance = 500*dependents
+    max_allowance = 1200*filing_status + dependent_allowance
+    min_threshold= (75000 * filing_status)
+    if salary <= min_threshold:
+        return max_allowance
     else:
-        difference = (salary)-(75000*filing_status)
-        depreciate_amount = int(difference/100)*5
-        depreciate_amount = min(1200*filing_status, depreciate_amount)
-        x =  1200*filing_status - depreciate_amount
-    y = x + 500*dependents
-    return y
+        difference = (salary - min_threshold)
+        depreciate_allowance = max_allowance - (difference*.05)
+        absolute_allowance = max(0,depreciate_allowance)
+        return absolute_allowance
 ############ Deploy
 if __name__ == '__main__':
     app.run_server()
