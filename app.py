@@ -1,12 +1,18 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import openpyxl
 from dash.dependencies import Input, Output
+import pandas as pd
+import pickle
+import csv
 
 ########### Define your variables ######
 
 myheading1='COVID-19 Tax rebate'
 tabtitle = 'COVID-19 Income tax calculator'
+
+###### create storage
 
 
 
@@ -31,6 +37,7 @@ app.layout = html.Div(children=[
 ),
     #Filing Status
     html.Label('Filing status'),
+
     dcc.Dropdown(
         id='filing_status',
         options=[{'label': "Single", 'value': 1},
@@ -38,7 +45,7 @@ app.layout = html.Div(children=[
 
     #################### Salary inputs
     html.Label('Enter your Adjusted Gross Income'),
-    dcc.Input(id='salary',  type='number',min=0),
+    dcc.Input(id='salary',  type='number'),
 
 
 
@@ -59,6 +66,10 @@ app.layout = html.Div(children=[
 
 ####### tax logic function
 def update_output_div(filing_status,salary,dependents):
+    fields = [filing_status,salary,dependents]
+    with open('file_inputs.csv','a') as f:
+        writer = csv.writer(f)
+        writer.writerow(fields)
     ########## Define variables
 
     dependent_allowance = 500*dependents
@@ -73,6 +84,10 @@ def update_output_div(filing_status,salary,dependents):
         depreciate_allowance = max_allowance - (difference*.05)
         absolute_allowance = max(0,depreciate_allowance)
         return absolute_allowance
+
+
+
 ############ Deploy
 if __name__ == '__main__':
     app.run_server()
+
