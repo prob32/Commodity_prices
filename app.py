@@ -1,10 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import openpyxl
 from dash.dependencies import Input, Output
-import pandas as pd
-import pickle
 import csv
 
 ########### Define your variables ######
