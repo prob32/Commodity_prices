@@ -38,7 +38,7 @@ app.layout = html.Div(children=[
     dcc.Dropdown(
         id='product',
         options=[
-            {'label':'Disinfectant Prices','value': 'Price of per 500 ml of Disinfectant'},
+            {'label':'Disinfectant Prices','value': 'Price per 500 ml of Disinfectant'},
             {'label':'Toilet paper prices','value': 'Price of a Toilet Paper Roll'}],value = 'Price of Disinfectant'),
     ##### Graph
     dcc.Graph(id = 'plot', figure = fig),
