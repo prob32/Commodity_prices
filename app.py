@@ -39,7 +39,7 @@ app.layout = html.Div(children=[
         id='product',
         options=[
             {'label':'Disinfectant Prices','value': 'Price of Disinfectant'},
-            {'label':'Toilet paper prices','value': 'Price of Toilet Paper Roll'}],value = 'Price of Disinfectant'),
+            {'label':'Toilet paper prices','value': 'Price of a Toilet Paper Roll'}],value = 'Price of Disinfectant'),
     ##### Graph
     dcc.Graph(id = 'plot', figure = fig),
     ######## output functions
@@ -62,7 +62,7 @@ def update_figure(product):
     fig.update_layout(
     title= product,
     xaxis = dict(
-        title='Prices are shown USD',
+        title='Prices are shown in USD',
         titlefont_size=16,
         tickfont_size=14),
     yaxis=dict(
