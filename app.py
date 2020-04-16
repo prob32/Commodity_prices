@@ -38,7 +38,7 @@ app.layout = html.Div(children=[
     dcc.Dropdown(
         id='product',
         options=[
-            {'label':'Disinfectant Prices','value': 'Price of Disinfectant'},
+            {'label':'Disinfectant Prices','value': 'Price of per 500 ml of Disinfectant'},
             {'label':'Toilet paper prices','value': 'Price of a Toilet Paper Roll'}],value = 'Price of Disinfectant'),
     ##### Graph
     dcc.Graph(id = 'plot', figure = fig),
@@ -62,11 +62,11 @@ def update_figure(product):
     fig.update_layout(
     title= product,
     xaxis = dict(
-        title='Prices are shown in USD',
+        title='Prices in USD',
         titlefont_size=16,
         tickfont_size=14),
     yaxis=dict(
-        title='Cities Around the World',
+        title='Select Survey Cities',
         titlefont_size=16,
         tickfont_size=14,
         showticklabels=False,)
