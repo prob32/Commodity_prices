@@ -43,7 +43,7 @@ app.layout = html.Div(children=[
     ##### Graph
     dcc.Graph(id = 'plot', figure = fig),
     ######## output functions
-    html.H4(id='div3', style={'color': colors['text']}),], style = {'columnCount': 1}
+    html.H4(id='div3', style={'color': colors['text'], 'width': '80%'}),], style = {'columnCount': 1}
 )
 
 
