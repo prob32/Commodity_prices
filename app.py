@@ -6,9 +6,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash.dependencies import Input, Output
 
-myheading1='April 2020 Prices of Toilet Paper and Disinfectant'
+myheading1='AIRINC April 2020 Prices of Toilet Paper and Disinfectant'
 tabtitle = 'Commodity Prices'
-
+AIRINC_link='https://airshare.air-inc.com/covid-19-comparison-global-prices-for-impacted-goods'
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 
@@ -30,7 +30,7 @@ app.layout = html.Div([
 
     html.H1(myheading1,
             style = {'color': colors['text']}),
-
+    html.A('Link back to AIRINC Blog', href=AIRINC_link),
 
 
     #Commoditity input
